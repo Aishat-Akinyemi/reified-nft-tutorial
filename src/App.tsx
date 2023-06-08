@@ -21,7 +21,7 @@ import { Mint } from "./components/MintForm/Mint";
 import { IssueMessage, MintMessage } from "./types/nft";
 
 function App() {
-  const [nftSingingClient, setNftSigningClient] = useState<NftClient | null>(
+  const [nftSigningClient, setNftSigningClient] = useState<NftClient | null>(
     null
   );
   const nftQueryClient: NftQueryClient | null = new NftQueryClient();
@@ -52,8 +52,8 @@ function App() {
    * It also resets the following state variables: nftSigningClient, account and isConnected.
    */
   const disconnect = () => {
-    if (nftSingingClient) {
-      nftSingingClient.disconnect();
+    if (nftSigningClient) {
+      nftSigningClient.disconnect();
       setNftSigningClient(null);
       setAccount(null);
       setIsConnected(false);
@@ -68,7 +68,7 @@ function App() {
    // This handles the creation of a new NFT denom
     const createDenom = async (denomMessage: IssueMessage) => {
       if (isConnected) {
-        await nftSingingClient?.issueDenom(denomMessage);
+        await nftSigningClient?.issueDenom(denomMessage);
         return denomMessage.id;
       } else throw new Error("Keplr Wallet not connected");
     };
@@ -76,7 +76,7 @@ function App() {
     //This handles minting of NFTs
     const mintNft = async (mintMessage: MintMessage) => {
       if (isConnected) {
-        await nftSingingClient?.mintNFT(mintMessage);
+        await nftSigningClient?.mintNFT(mintMessage);
         return mintMessage.denomId;
       } else throw new Error("Keplr Wallet not connected");
     };

@@ -2211,7 +2211,7 @@ Along with the components, we are importing the Nft clients, functions associate
 ```tsx
 ...
 function App() {
-	  const [nftSingingClient, setNftSigningClient] = useState<NftClient | null>(
+	  const [nftSigningClient, setNftSigningClient] = useState<NftClient | null>(
 	    null
 	  );
 	  const nftQueryClient: NftQueryClient | null = new NftQueryClient();
@@ -2246,8 +2246,8 @@ The `connectWallet` function lets a user connect to the Cudos blockchain network
 
 ```tsx
   const disconnect = () => {
-    if (nftSingingClient) {
-      nftSingingClient.disconnect();
+    if (nftSigningClient) {
+      nftSigningClient.disconnect();
       setNftSigningClient(null);
       setAccount(null);
       setIsConnected(false);
@@ -2265,14 +2265,14 @@ const getAllNftsById = async (denomId: string) => {
 
   const createDenom = async (denomMessage: IssueMessage) => {
     if (isConnected) {
-      await nftSingingClient?.issueDenom(denomMessage);
+      await nftSigningClient?.issueDenom(denomMessage);
       return denomMessage.id;
     } else throw new Error("Keplr Wallet not connected");
   };
 
   const mintNft = async (mintMessage: MintMessage) => {
     if (isConnected) {
-      await nftSingingClient?.mintNFT(mintMessage);
+      await nftSigningClient?.mintNFT(mintMessage);
       return mintMessage.denomId;
     } else throw new Error("Keplr Wallet not connected");
   };
@@ -2289,13 +2289,13 @@ import React, {useState} from "react";
 import { IssueMessage, MintMessage } from "./types/nft";
 
 function App() {
-  const [nftSingingClient, setNftSigningClient] = useState<NftClient | null>(
+  const [nftSigningClient, setNftSigningClient] = useState<NftClient | null>(
     null
   );
  ...
     const mintNft = async (mintMessage: MintMessage) => {
       if (isConnected) {
-        await nftSingingClient?.mintNFT(mintMessage);
+        await nftSigningClient?.mintNFT(mintMessage);
         return mintMessage.denomId;
       } else throw new Error("Keplr Wallet not connected");
     };
