@@ -401,7 +401,7 @@ const client = await SigningStargateClient.connectWithSigner(
 With the snippet above, we instantiate a `SigningstargateClient` object, by calling on the `SigningStargate.connectWithSigner()` function from the CudosJs library. We pass in parameters such as rpc node endpoint, offlineSigner and an object containing optional parameters prefix and gasPrice, other acceptable options are broadcastTimeoutMs and lots more. 
 
 The returned `client` is an instance that is connected to the Cudos rpc endpoint to broadcast and view transaction history on Cudos. You may check your editor’s intellisense to see the possible methods/functions available to us. 
-Upon completing this step, your project should be similar to what can be found here[branch 3].
+Upon completing this step, your project should be similar to what can be [found here](https://github.com/cudos-examples/reified-nfts/tree/Step-03).
 
 ## STEP 04 Composing Queries and Transactions
 
@@ -724,7 +724,7 @@ export interface MintMessage {
 ```
 
 This file contains the definition of the interfaces relating to our project. We imported some of the interfaces in this step, we would use the rest in the coming steps.
-Upon completing this step, your project should be similar to what can be found here [branch 4].
+Upon completing this step, your project should be similar to what can be  [found here](https://github.com/cudos-examples/reified-nfts/tree/Step-04).
 
 ## Step 05 Creating the components for Minting NFTs
 
@@ -1417,7 +1417,7 @@ export const Mint = ({ account, createDenom, mintNft }: MintProps) => {
   );
 };
 ```
-Upon completing this step, your project should be similar to what can be found here[branch 5].
+Upon completing this step, your project should be similar to what can be [found here](https://github.com/cudos-examples/reified-nfts/tree/Step-05).
 
 ## Step 06 Creating the components for Displaying NFTs
 ### Collection Components
@@ -1907,7 +1907,7 @@ If there are no NFTs owned by this user in the collection, we display the messag
 
 Otherwise, we display a list of Nfts. It displays the collection's name, symbol, schema, and the count. The list is represented by a grid layout, and each NFT is rendered using the `Nft` component, passing the respective NFT data as a prop.
 
-Upon completing this step, your project should be similar to what can be found here[branch 6].
+Upon completing this step, your project should be similar to what can be [found here](https://github.com/cudos-examples/reified-nfts/tree/Step-06).
 
 ## Step 07 Tying the Components Together
 
