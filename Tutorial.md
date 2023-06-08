@@ -96,13 +96,15 @@ After installing all the dependencies, start the development server to verify ev
 
 ![boilerplate react-vite project browser output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nbfvofw0v0jc2vse41zc.png)
 
-Upon completing this step, your project should be similar to what can be found here[branch 1].
+Upon completing this step, your project should be similar to what can be found here [Step 1 branch](https://github.com/cudos-examples/reified-nfts/tree/Step-01).
 
 ## Step 02 Adapting and removing boilerplate code
 
 In this step, we will remove some boilerplate code, update the `vite.config.ts` file and adapt the project to use Material UI components. 
 
 We will make a change and an addition to the `index.html` file. 
+
+Please note that the use of ellipsis (...) in code snippets in this tutorial signifies that some parts of the code in your code editor that is omitted for brevity. 
 
 ```html
 // index.html	
@@ -240,7 +242,7 @@ To enable routing in our web app, we import `BrowserRouter` from the `react-rout
 
 Now we need to add some configurations to the `vite.config.ts` file
 
-1. Add `import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill' ` to the imports
+1. Add `import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill' ` to the imports in the `vite.config.ts` file
 2. Add the following config to the config definition
 
 ```
@@ -259,15 +261,32 @@ Now we need to add some configurations to the `vite.config.ts` file
       }
   })
 ```
+The file will look like [this](https://github.com/cudos-examples/reified-nfts/blob/Step-02/vite.config.ts)
 
 After following the above instructions, running `npm run dev` should display as below in the browser.
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/73s0jhedzj552oit8vb8.png)
-Upon completing this step, your project should be similar to what can be found here[branch 2].
+Upon completing this step, your project should be similar to what can be found here [Step 02 branch](https://github.com/cudos-examples/reified-nfts/tree/Step-02).
 
 ## Step 03 Create helper functions related to the Keplr Wallet
 
-We will first need to create `global.d.ts` file which is a type declaration file. In it, we will extend the global browser `window` interface to include the `KeplrWindow` interface provided by the `@keplr-wallet/types` interface. This is our way of ensuring we can access the functions provided with the KeplrWallet extension through the global `window` object. You will find an example of this when we call on `window.keplr.enable()` later in this section.
+We will first need to create a type declaration file named `global.d.ts`. Inside the `src` folder, add a new folder named `types`, creating the `global.d.ts` inside the newly created `types` folder.
+
+```
+  import { Window as KeplrWindow } from "@keplr-wallet/types";
+
+  export {};
+
+  declare global {
+    // type Override<T1, T2> = Omit<T1, keyof T2> & T2
+    interface Window extends KeplrWindow {
+    }
+  
+  }
+
+```
+
+We are extending the global browser `window` interface to include the `KeplrWindow` interface provided by the `@keplr-wallet/types` interface. This is our way of ensuring we can access the functions provided with the KeplrWallet extension through the global `window` object. You will find an example of this when we call on `window.keplr.enable()` later in this section.
 
 ### Creating .env file to store our variables
 
